@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="qa_annotator">
+      <import name="descriptors.qa_annotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="gold_pipeline">
+      <import name="descriptors.gold_pipeline"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ngram_annotator">
+      <import name="descriptors.ngram_annotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="answerEvaluator">
+      <import name="descriptors.answerEvaluator"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>hw2-soumyab-aae</name>
+    <description>Inputs a text file with one question and multiple answers. It gives the correct answers ordered in decreasing order of confidence.</description>
+    <version>1.0</version>
+    <vendor>Soumya Batra</vendor>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>qa_annotator</node>
+        <node>gold_pipeline</node>
+        <node>ngram_annotator</node>
+        <node>answerEvaluator</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">uima.tcas.DocumentAnnotation</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.AnswerScore</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.NGram</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Token</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Question</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Answer</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>
