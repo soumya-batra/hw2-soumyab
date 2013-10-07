@@ -13,8 +13,8 @@
     <delegateAnalysisEngine key="ngram_annotator">
       <import name="descriptors.ngram_annotator"/>
     </delegateAnalysisEngine>
-    <delegateAnalysisEngine key="answerEvaluator">
-      <import name="descriptors.answerEvaluator"/>
+    <delegateAnalysisEngine key="answer_evaluator">
+      <import name="descriptors.answer_evaluator"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
@@ -29,9 +29,10 @@
         <node>qa_annotator</node>
         <node>gold_pipeline</node>
         <node>ngram_annotator</node>
-        <node>answerEvaluator</node>
+        <node>answer_evaluator</node>
       </fixedFlow>
     </flowConstraints>
+    <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
       <capability>
